@@ -25,6 +25,7 @@ class User extends Authenticatable
         'slug_username',
         'email',
         'password',
+        'points'
     ];
 
     /**
@@ -53,5 +54,8 @@ class User extends Authenticatable
 
     public function posts(){
         return $this->hasMany(Post::class);
+    }
+    public function buyingPoints(){
+        return $this->hasMany(BuyingPoint::class);
     }
 }

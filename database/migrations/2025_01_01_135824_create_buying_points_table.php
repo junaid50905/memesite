@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('buying_points', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('unique_post_id');
-            $table->text('content')->nullable();
-            $table->string('image')->nullable();
-            $table->integer('point_deduction');
+            $table->string('unique_buying_point_id');
+            $table->integer('recharge_amount');
+            $table->integer('points')->comment('3 point per taka');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('buying_points');
     }
 };
